@@ -30,48 +30,6 @@ Groups Web Server VMs (myVmWeb)
 Management Server ASG	myAsgMgmtServers	
 Groups Management Server VMs (myVMMgmt)
 
-
-This is an excellent project for a GitHub repository. Based on the provided lab report, here is a structured outline for your repository's README.md file.
-
-The goal is to provide a clear, technical, and easily reproducible setup for Azure Network Security Groups (NSGs) and Application Security Groups (ASGs).
-
-🛡️ Azure Network Segmentation with NSGs and ASGs
-Project Overview
-This repository details the implementation of a secure virtual networking infrastructure in Microsoft Azure using Network Security Groups (NSGs) and Application Security Groups (ASGs). The primary objective is to enforce the principle of least privilege by strictly controlling inbound traffic to different classes of Virtual Machines (VMs) deployed within the same subnet.
-
-Goals
-The project infrastructure is designed to meet the following security and functional requirements:
-
-
-Web Servers (myVmWeb): Must be accessible via HTTP (Port 80) and HTTPS (Port 443) from the internet to display the IIS web page.
-
-
-Management Servers (myVMMgmt): Must be accessible via Remote Desktop Protocol (RDP - Port 3389) from the internet for administrative access.
-
-
-Isolation: External RDP access to the Web Servers is strictly denied.
-
-Architecture
-The entire infrastructure is deployed in the East US region. All resources reside in a single Virtual Network (myVirtualNetwork) and its single subnet (default). Security filtering is applied at the subnet level via the NSG, with traffic rules targeting specific ASGs.
-
-Component	Type	Configuration
-Virtual Network (VNet)	myVirtualNetwork	
-
-Address Space: 10.0.0.0/16 
-
-Subnet	default	
-
-Address Range: 10.0.0.0/24 
-
-Network Security Group	myNsg	
-Associated with the default subnet 
-
-Web Server ASG	myAsgWebServers	
-Groups Web Server VMs (myVmWeb) 
-
-Management Server ASG	myAsgMgmtServers	
-Groups Management Server VMs (myVMMgmt) 
-
 # Inbound Security Rules in myNsg
   -The NSG rules use ASGs as their destination, allowing precise control over which traffic reaches which server group:
    1. Rule: Allow-Web-All
